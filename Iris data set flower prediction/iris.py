@@ -24,4 +24,12 @@ print("Required target values ")
 print (test_target)
 print("Target values after prediction")
 print (clf.predict(test_data))
-
+print("Enter the features of flower to be predicted")
+a=[]
+for i in range(4):
+    print(iris.feature_names[i])
+    x=float(input())
+    a.append(x)
+predict_data = np.array(a)
+predict_data=predict_data.reshape(1,-1)
+print (iris.target_names[clf.predict(predict_data)])
