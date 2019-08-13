@@ -7,23 +7,25 @@ iris = load_iris()
 #print (iris.feature_names)
 #print (iris.target_names)
 #print (iris.data[0])
-test_idx = [0,50,100]
 
-#training data
-train_target = np.delete(iris.target, test_idx)
-train_data = np.delete(iris.data, test_idx, axis=0)
+X = iris.data
+y = iris.target
 
-#testing data
-test_target = iris.target[test_idx]
-test_data = iris.data[test_idx]
+#splitting data to train and test
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.5)
 
 #Decision tree approach
 clf = tree.DecisionTreeClassifier()
-clf.fit(train_data,train_target)
-print("Required target values ")
-print (test_target)
-print("Target values after prediction")
-print (clf.predict(test_data))
+clf.fit(X_train, y_train)
+
+#Finding the accuracy of the classifier
+
+predictions = clf.predict(X_test)
+print("Accuracy of algorithm is")
+from sklearn.metrics import accuracy_score
+print (accuracy_score(y_test, predictions))
+
 print("Enter the features of flower to be predicted")
 a=[]
 for i in range(4):
