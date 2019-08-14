@@ -1,3 +1,4 @@
+#Basic implementation of knn
 import sklearn
 from sklearn.datasets import load_iris
 from numpy import array
